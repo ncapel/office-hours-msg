@@ -14,8 +14,7 @@ const roleMent = roleMention(roleId);
 function sendMessage() {
 	webhookClient
 		.send(
-			'This is a test'
-			// `Good Morning! ${roleMent} Office Hours will be held this Wednesday and Thursday following our class session. No addition zoom links are needed, just stick around after class has concluded.`
+			`Good Morning! ${roleMent} Office Hours will be held this Wednesday and Thursday following our class session. No addition zoom links are needed, just stick around after class has concluded.`
 		)
 		.catch(console.error);
 }
