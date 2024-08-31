@@ -2,7 +2,7 @@ name: Schedule Message
 
 on:
   schedule:
-    - cron: '50 19 * * *'
+    - cron: '39 4 * * *'
 
 jobs:
   send-message:
