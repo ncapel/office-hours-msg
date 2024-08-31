@@ -11,6 +11,16 @@ const webhookClient = new WebhookClient({
 const roleId = process.env.ROLE_ID;
 const roleMent = roleMention(roleId);
 
+if (!webhookId || !webhookToken) {
+	console.error("Webhook ID or Webhook Token is missing");
+	process.exit(1);
+}
+
+if (!roleId) {
+	console.error("Role ID is missing");
+	process.exit(1);
+}
+
 function sendMessage() {
 	webhookClient
 		.send(
