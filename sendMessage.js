@@ -12,20 +12,19 @@ const roleId = process.env.ROLE_ID;
 const roleMent = roleMention(roleId);
 
 if (!webhookId || !webhookToken) {
-	console.error("Webhook ID or Webhook Token is missing");
+	console.error('Webhook ID or Webhook Token is missing');
 	process.exit(1);
 }
 
 if (!roleId) {
-	console.error("Role ID is missing");
+	console.error('Role ID is missing');
 	process.exit(1);
 }
 
 function sendMessage() {
 	webhookClient
 		.send(
-			'THIS IS A TEST'
-			/*`Good Morning! ${roleMent} Office Hours will be held this Wednesday and Thursday following our class session. No addition zoom links are needed, just stick around after class has concluded.` */
+			`Good Morning! ${roleMent} Office Hours will be held this Wednesday and Thursday following our class session. No addition zoom links are needed, just stick around after class has concluded.`
 		)
 		.catch(console.error);
 }
