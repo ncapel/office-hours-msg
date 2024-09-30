@@ -24,10 +24,11 @@ if (!roleId) {
 function sendMessage() {
 	let d = new Date();
 	const targetDate = new Date('2024-09-27');
+	const zoomLink = '[Zoom Link](https://us02web.zoom.us/j/88918893021)';
 	if (d >= targetDate) {
 		webhookClient
 			.send(
-				`Good Morning! ${roleMent} Office Hours will be held this Tuesday and Friday from 6:00PM - 7:30PM EST.`
+				`Good Morning! ${roleMent} Office Hours will be held this Tuesday and Friday from 5:00PM - 6:30PM EST. ${zoomLink}`
 			)
 			.catch(console.error);
 	} else {
