@@ -22,22 +22,11 @@ if (!roleId) {
 }
 
 function sendMessage() {
-	let d = new Date();
-	const targetDate = new Date('2024-09-27');
 	const zoomLink = '[Zoom Link](https://us02web.zoom.us/j/88918893021)';
-	if (d >= targetDate) {
-		webhookClient
-			.send(
-				`Good Morning! ${roleMent} Office Hours will be held this Tuesday and Friday from 5:00PM - 6:30PM EST. ${zoomLink}`
-			)
-			.catch(console.error);
-	} else {
-		webhookClient
-			.send(
-				`Good Morning! ${roleMent} Office Hours will be held this Wednesday and Thursday following our class session. No addition zoom links are needed, just stick around after class has concluded.`
-			)
-			.catch(console.error);
-	}
+	webhookClient
+		.send(
+			`Good Morning! ${roleMent} Office Hours will be held this Tuesday and Friday from 5:00PM - 6:30PM EST. Additional weekend office hours will be held on Sunday from 9:00AM - 11:00AM EST. ${zoomLink}`
+		)
 }
 
 sendMessage();
