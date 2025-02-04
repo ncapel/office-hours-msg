@@ -1,3 +1,4 @@
+// require('dotenv').config();
 const { WebhookClient, roleMention } = require('discord.js');
 
 const webhookId = process.env.WEBHOOK_ID;
@@ -24,9 +25,17 @@ if (!roleId) {
 function sendMessage() {
 	const zoomLinkTueFri = '[Zoom Link](https://us02web.zoom.us/j/88918893021)';
 	const zoomLinkSun = '[Zoom Link](https://us02web.zoom.us/j/81934017172)';
-	webhookClient.send(
-		`Good Morning! ${roleMent} Office Hours will be held this Tuesday and Friday from 5:00PM - 6:30PM EST. ${zoomLinkTueFri} Additional weekend office hours will be held on Sunday from 9:00AM - 11:00AM EST. ${zoomLinkSun}`
-	);
+
+	const today = new Date();
+	const cohortStartDate = new Date('2025-02-10');
+
+	if (today >= cohortStartDate) {
+		webhookClient.send(
+			`Good Morning! ${roleMent} Office Hours will be held this Tuesday and Friday from 5:00PM - 6:30PM EST. ${zoomLinkTueFri} Additional weekend office hours will be held on Sunday from 9:00AM - 11:00AM EST. ${zoomLinkSun}`
+		);
+	} else {
+		webhookClient.send('TEST');
+	}
 }
 
 sendMessage();
