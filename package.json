@@ -18,5 +18,8 @@
   "homepage": "https://github.com/ncapel/office-hours-msg#readme",
   "dependencies": {
     "discord.js": "^14.15.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7"
   }
 }
