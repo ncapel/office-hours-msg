@@ -2,7 +2,7 @@ name: Schedule Message
 
 on:
   schedule:
-    - cron: '0 13 * * 1'
+    - cron: "0 13 * * 1"
 
 jobs:
   send-message:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install
@@ -26,3 +26,5 @@ jobs:
           WEBHOOK_ID: ${{ secrets.WEBHOOK_ID }}
           WEBHOOK_TOKEN: ${{ secrets.WEBHOOK_TOKEN }}
           ROLE_ID: ${{ secrets.ROLE_ID }}
+          CANVAS_TOKEN: ${{ secrets.CANVAS_TOKEN }}
+          CANVAS_COURSE_ID: ${{ secrets.CANVAS_COURSE_ID }}
