@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 const { WebhookClient, roleMention } = require("discord.js");
 
 // Discord vars
@@ -121,8 +121,25 @@ function isWithIn7Days(dateStr) {
   return diffInDays >= 0 && diffInDays <= 7;
 }
 
+function sortByDueDate(arr) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length - 1; i++) {
+      let next = i + 1;
+      if (arr[i].date > arr[i + 1].date) {
+        [arr[i], arr[next]] = [arr[next], arr[i]];
+        swapped = true;
+      }
+    }
+  } while (swapped);
+
+  return arr;
+}
+
 async function main() {
   await getAssignmentInfo();
+  sortByDueDate(assignmentsDue);
   sendMessage();
 }
 
