@@ -26,9 +26,11 @@ if (!roleId) {
 function sendMessage() {
 	const zoomLinkTueFri =
 		'[Zoom Link](<https://us02web.zoom.us/j/88918893021>)';
+
 	const zoomLinkSun = '[Zoom Link](<https://us02web.zoom.us/j/81934017172>)';
 
 	const today = new Date();
+
 	const cohortStartDate = new Date('2025-02-10');
 
 	if (today >= cohortStartDate) {
@@ -36,22 +38,16 @@ function sendMessage() {
 			`Good Morning ${roleMent}!\nOffice Hours will be held on Tuesday and Friday from 5:00PM - 6:30PM EST. ${zoomLinkTueFri}\nAdditional weekend office hours will be held on Sunday from 9:00AM - 11:00AM EST. ${zoomLinkSun}`
 		);
 
-		if (assignmentsDue.length < 1) {
-			webhookClient.send(
-				// mapping each object from assignmentsDue with some markdown formatting
-				`# Upcoming Due Dates\n- Nothing due with in the next 7 days!`
-			);
-		} else {
-			webhookClient.send(
-				// mapping each object from assignmentsDue with some markdown formatting
-				`# Upcoming Due Dates\n${assignmentsDue
-					.map(
-						(a) =>
-							`- **[${a.name}](<https://uprighted.instructure.com/courses/${courseId}/assignments/${a.id}>)** : ${a.date}`
-					)
-					.join('\n')}`
-			);
-		}
+		webhookClient.send(
+			// mapping each object from assignmentsDue with some markdown formatting
+
+			`# Upcoming Due Dates\n${assignmentsDue
+				.map(
+					(a) =>
+						`- **[${a.name}](<https://uprighted.instructure.com/courses/${courseId}/assignments/${a.id}>)** : ${a.date}`
+				)
+				.join('\n')}`
+		);
 	}
 }
 
@@ -77,7 +73,7 @@ async function getAssignmentInfo() {
 		method: 'GET',
 		headers: {
 			Authorization: `Bearer ${canvasToken}`,
-			'Concept-Type': 'application/json',
+			'Content-Type': 'application/json',
 		},
 	})
 		.then((response) => response.json())
